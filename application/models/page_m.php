@@ -6,4 +6,5 @@ class Page_m extends MY_Model {
     protected $_order_by = 'order';
     protected $_rules = array();
     protected $_timestamps = FALSE;
+
 }

@@ -40,7 +40,31 @@ class MY_Model extends CI_Model {
         $this->db->where($where);
         return $this->get(NULL, $single);
     }
-    public function save(){}
+    public function save($data, $id = NULL){
+        //Set timestamps
+        if ($this->_timestamps== TRUE){
+            $now = $data('Y-m-d H:i:s');
+            $id || $data['created'] = $now;
+            $data['modified'] = $now;
+        }
+
+        //insert
+        if ($id === NULL){
+            !isset($data[$this->_primary_key]) || $data[$this->_primary_key] = NULL;
+            $this->db->set($data);
+            $this->db->insert($this->_table_name);
+            $id = $this->insert_id();
+        }
+        //update
+        else {
+            $filter = $this->_primary_filter;
+            $id = $filter($data[$this->_primary_key]);
+            $this->db->set($data);
+            $this->where($this->_primary_key, $id);
+            $this->db->update($this->_table_name);
+        }
+        return $id;
+    }
     public function delete(){}
 
 }
