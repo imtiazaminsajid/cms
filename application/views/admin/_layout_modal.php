@@ -2,13 +2,8 @@
 
 <body style = "background: #555;">
 <div class="modal show" role="dialog">
-    <div class="model-header">
-        <h3>Page title</h3>
 
-    </div>
-    <div class="modal-body">
-
-    </div>
+    <?php $this->load->view($subview); ?>
     <div class="modal-footer">
         &copy; <?php echo $meta_title; ?>
 
