@@ -70,6 +70,7 @@ class CI_Session {
 	public function __construct(array $params = array())
 	{
 		// No sessions under CLI
+
 		if (is_cli())
 		{
 			log_message('debug', 'Session: Initialization under CLI aborted.');
@@ -981,5 +982,6 @@ class CI_Session {
 	{
 		$this->unmark_temp($key);
 	}
+
 
 }

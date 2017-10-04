@@ -4,6 +4,7 @@
 </div>
 
 <div class="modal-body">
+
     <?php echo validation_errors(); ?>
     <?php echo form_open(); ?>
     <table class="table">
